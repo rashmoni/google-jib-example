@@ -9,17 +9,10 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - name: JIB container build and publish
-        uses: MathieuSoysal/jib-container-publish.yml@v2.1.5
-        with:
-          # Use docker.io for Docker Hub if empty
-          REGISTRY: docker.io
-          # github.repository as <your-account>/<your-repo>
-          IMAGE_NAME: ${{ github.repository }}
-          # Tag name of the image to publish
-          tag-name: latest
-          # Username to login to registry
-          USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          # Password to login to registry
-          PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-          java-version: 17
+      - name: Build JIB container and publish to GitHub Packages
+        run: |
+          mvn package com.google.cloud.tools:jib-maven-plugin:3.4.1:build \
+          -Djib.to.image=registry.hub.docker.com/rashudey/google-jib-image-example\
+          -Djib.to.auth.username=${{ secrets.USERNAME }} \
+          -Djib.to.auth.password=${{ secrets.PASSWORD }}
+        shell: bash
