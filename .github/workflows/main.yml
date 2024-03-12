@@ -13,9 +13,9 @@ jobs:
         uses: MathieuSoysal/jib-container-publish.yml@v2.1.5
         with:
           # Use docker.io for Docker Hub if empty
-          REGISTRY: registry.hub.docker.com
+          REGISTRY: docker.io
           # github.repository as <your-account>/<your-repo>
-          IMAGE_NAME: /rashudey/google-jib-image-example
+          IMAGE_NAME: ${{ github.repository }}
           # Tag name of the image to publish
           tag-name: latest
           # Username to login to registry
