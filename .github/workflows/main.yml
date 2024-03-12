@@ -15,7 +15,7 @@ jobs:
           # Use docker.io for Docker Hub if empty
           REGISTRY: docker.io
           # github.repository as <your-account>/<your-repo>
-          IMAGE_NAME: google-jib-image-example
+          IMAGE_NAME: registry.hub.docker.com/rashudey/google-jib-image-example
           # Tag name of the image to publish
           tag-name: latest
           # Username to login to registry
